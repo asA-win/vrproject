@@ -1,0 +1,134 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container" id="mainContainer">
+        <h2>Library Management System</h2>
+        <!-- Login Form -->
+        <div id="loginForm" class="form-container">
+            <h3>Login</h3>
+            <div class="form-group">
+                <label for="loginUsername">Username</label>
+                <input type="text" id="loginUsername">
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword">
+            </div>
+            <button onclick="login()">Login</button>
+            <p>Don't have an account? <a href="#" onclick="showRegistrationForm()">Sign up</a></p>
+        </div>
+        <!-- Registration Form -->
+        <div id="registrationForm" class="form-container" style="display: none;">
+            <h3>Registration</h3>
+            <div class="form-group">
+                <label for="registerUsername">Username</label>
+                <input type="text" id="registerUsername">
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Password</label>
+                <input type="password" id="registerPassword">
+            </div>
+            <div class="form-group">
+                <label for="registerEmail">Email</label>
+                <input type="email" id="registerEmail">
+            </div>
+            <button onclick="register()">Register</button>
+            <p>Already have an account? <a href="#" onclick="showLoginForm()">Login</a></p>
+        </div>
+    </div>
+
+    <div class="container" id="bookCatalog" style="display: none;">
+        <!-- Book Catalog -->
+        <h3>Book Catalog</h3>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <button onclick="searchBooks()">Search</button>
+        </div>
+        
+        <div id="filterOptions">
+            <label for="genreFilter">Filter by Genre:</label>
+            <select id="genreFilter" onchange="filterBooks()">
+                <option value="">All Genres</option>
+                <option value="Fiction">Fiction</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <!-- Add more genres as needed -->
+            </select>
+        </div>
+        <table id="bookTable">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>Year</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="bookTableBody">
+                <!-- Book data will be inserted here -->
+            </tbody>
+        </table>
+        <div class="button-group">
+            <button onclick="showAddBookForm()">Add Book</button>
+            <button onclick="showUpdateBookForm()">Update Book</button>
+            <button onclick="deleteSelectedBooks()">Delete Selected Books</button>
+        </div>
+    </div>
+
+    <div class="container" id="addUpdateBookForm" style="display: none;">
+        <!-- Add/Update Book Form -->
+        <h3 id="formTitle">Add Book</h3>
+        <div class="form-container">
+            <div class="form-group">
+                <label for="bookTitle">Title</label>
+                <input type="text" id="bookTitle">
+            </div>
+            <div class="form-group">
+                <label for="bookAuthor">Author</label>
+                <input type="text" id="bookAuthor">
+            </div>
+            <div class="form-group">
+                <label for="bookGenre">Genre</label>
+                <input type="text" id="bookGenre">
+            </div>
+            <div class="form-group">
+                <label for="bookYear">Year</label>
+                <input type="number" id="bookYear">
+            </div>
+            <button id="submitBtn" onclick="addOrUpdateBook()">Add Book</button>
+            <button onclick="cancelForm()">Cancel</button>
+        </div>
+    </div>
+
+    <div class="container" id="recommendations" style="display: none;">
+        <!-- Recommended Books Section -->
+        <h3>Recommended Books</h3>
+        <div id="recommendedBooks"></div>
+    </div>
+
+    <!-- Book Details Modal -->
+    <div id="bookDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle"></h3>
+            <p id="modalAuthor"></p>
+            <p id="modalGenre"></p>
+            <p id="modalYear"></p>
+            <!-- Add more details as needed -->
+        </div>
+    </div>
+
+    <!-- Account Management Section -->
+    <div class="container" id="accountManagement">
+        <h3>Account Management</h3>
+        <!-- Add links/buttons for account management features here -->
+    </div>
+</body>
+</html>
